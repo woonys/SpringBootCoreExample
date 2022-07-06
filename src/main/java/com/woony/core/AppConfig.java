@@ -15,7 +15,7 @@ public class AppConfig {
         return new MemberServiceImpl(new MemoryMemberRepository());
     }
 
-    public OrderService orderService() {
+    public OrderService orderService() { // 마찬가지로 Appconfig에서 의존성 주입
         return new OrderServiceImpl(new MemoryMemberRepository(), new FixCountPolicy());
     }
 }
