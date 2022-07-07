@@ -6,11 +6,11 @@ import com.woony.core.member.MemberRepository;
 
 public class OrderServiceImpl implements OrderService{
 
-/**    아래 둘 다 특정 구현체(MemoryMemeberRepository, FixCountPolicy)에 의존하는 애들.
+     /**    아래 둘 다 특정 구현체(MemoryMemeberRepository, FixCountPolicy)에 의존하는 애들.
 
-        private final MemberRepository memberRepository = new MemoryMemberRepository();
-        private final DiscountPolicy discountPolicy = new FixCountPolicy();
- */
+     private final MemberRepository memberRepository = new MemoryMemberRepository();
+     private final DiscountPolicy discountPolicy = new FixCountPolicy();
+     */
     // 아래와 같이 해놓으면 더이상 특정 구현체에 의존하지 않는다. 이 경우, 어떤 구현체를 쓸 것인지는 AppConfig와 아래 생성자를 통해 주입한다.
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;

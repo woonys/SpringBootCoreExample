@@ -3,7 +3,7 @@ package com.woony.core.discount;
 import com.woony.core.member.Grade;
 import com.woony.core.member.Member;
 
-public class FixCountPolicy implements DiscountPolicy {
+public class FixDiscountPolicy implements DiscountPolicy {
     private int discountFixAmount = 1000; // 1000원 할인
 
     @Override

@@ -29,7 +29,8 @@ public class AppConfig {
     }
 
     public DiscountPolicy discountPolicy() {
-        return new FixDiscountPolicy();
+        //return new FixDiscountPolicy();
+        return new RateDiscountPolicy(); // 이렇게만 변경하면 기능 변경 끝! 엄청 간단!
     }
 }
 
