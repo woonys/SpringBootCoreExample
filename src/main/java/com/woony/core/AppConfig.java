@@ -21,16 +21,19 @@ public class AppConfig {
     // 현재 AppConfig 문제점: 현재 AppConfig를 보면 중복이 있고 역할에 따른 구현이 잘 보이지 않는다. 역할을 명확하게 드러낼 필요.
     @Bean // -> 얘네가 스프링 컨테이너에 등록된다.
      public MemberService memberService() { // 생성자 주입 방식으로!
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     } // 현재는 Mem
 
     // 이렇게 하면 위에 memberService() 전체를 볼 게 아니라 바로 아래 MemberRepository만 보면 된다!
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
     @Bean
     public OrderService orderService() {
+        System.out.println("AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
     @Bean
