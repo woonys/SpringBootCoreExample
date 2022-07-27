@@ -1,9 +1,12 @@
 package com.woony.core.order;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.woony.core.discount.DiscountPolicy;
 import com.woony.core.member.Member;
 import com.woony.core.member.MemberRepository;
-
+@Component
 public class OrderServiceImpl implements OrderService{
 
      /**    아래 둘 다 특정 구현체(MemoryMemeberRepository, FixCountPolicy)에 의존하는 애들.
@@ -23,6 +26,7 @@ public class OrderServiceImpl implements OrderService{
      *
      * 결과적으로 'OrderServiceImpl'에는 'MemoryMemberRepository', 'FixDiscountPolicy' 객체 의존관계가 AppConfig를 통해 외부로부터 주입된다.
      * */
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;

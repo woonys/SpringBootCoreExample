@@ -1,5 +1,8 @@
 package com.woony.core;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
 import com.woony.core.discount.DiscountPolicy;
 import com.woony.core.discount.FixDiscountPolicy;
 import com.woony.core.discount.RateDiscountPolicy;
@@ -11,6 +14,7 @@ import com.woony.core.order.OrderService;
 import com.woony.core.order.OrderServiceImpl;
 
 // 객체의 생성과 연결: AppConfig가 담당한다!
+@Configuration
 public class AppConfig {
 
     // AppConfig 객체는 memoryMemberRepository 객체를 생성하고 memberServiceImpl이 생성될 때 이 참조값을 생성자로 전달한다.
