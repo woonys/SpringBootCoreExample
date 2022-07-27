@@ -37,4 +37,8 @@ public class OrderServiceImpl implements OrderService{
         // 할인한 금액에 대한 주문 반환
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
+
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
