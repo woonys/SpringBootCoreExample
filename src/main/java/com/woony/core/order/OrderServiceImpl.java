@@ -26,11 +26,32 @@ public class OrderServiceImpl implements OrderService{
      *
      * 결과적으로 'OrderServiceImpl'에는 'MemoryMemberRepository', 'FixDiscountPolicy' 객체 의존관계가 AppConfig를 통해 외부로부터 주입된다.
      * */
+
+    /**
+     * 생성자를 이용한 의존성 주입 과정
+     *
+     * - 스프링에서 컴포넌트 스캔해서 OrderServiceImpl을 빈에 등록할 때
+     * - 등록하려면 생성자를 호출해야지 → 생성자 호출할 때 @Autowired 있는 거 보고
+     * - 스프링 컨테이너에서 MemberRepository, DiscountPolicy 스프링 빈을 꺼낸 다음 여기에 주입해준다!
+     *
+     * - 이 방식은 불변, 필수 의존관계에 사용한다.
+     * - 위의 OrderServiceImpl에서 생성자만 memberRepository, discountPolicy를 건들 수 있지 다른 애들은 못 건드린다! → 의도: 중간에 memberRepo, discountPolicy를 바꾸고 싶지 않기 때문!
+     * - 불변 객체에 열어두는 코드가 생기면 → 어떻게든 누군가가 수정할 수도 있다!
+     *
+     */
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
+
+    /* 아래와 같이 변경에 열려있으면 안됨.
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+		this.discountPolicy = discountPolicy;
+    }
+
+    *
+    * */
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
