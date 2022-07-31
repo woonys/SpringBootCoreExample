@@ -15,8 +15,8 @@ public class OrderServiceImpl implements OrderService{
      private final DiscountPolicy discountPolicy = new FixCountPolicy();
      */
     // 아래와 같이 해놓으면 더이상 특정 구현체에 의존하지 않는다. 이 경우, 어떤 구현체를 쓸 것인지는 AppConfig와 아래 생성자를 통해 주입한다.
-    private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy;
+    private MemberRepository memberRepository;
+    private DiscountPolicy discountPolicy;
 
     /** AppConfig로 설계를 변경했기 때문에 'OrderServiceImpl'은 'FixDiscountPolicy'에 의존하지 않는다.
      * 단지 'DiscountPolicy' 인터페이스에만 의존함.
@@ -41,6 +41,7 @@ public class OrderServiceImpl implements OrderService{
      */
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        System.out.println("1. OrderServiceImpl.OrderServiceImpl");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
