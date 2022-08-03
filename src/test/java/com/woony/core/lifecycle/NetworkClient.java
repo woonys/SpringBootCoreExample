@@ -1,9 +1,7 @@
 package com.woony.core.lifecycle;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
 
-public class NetworkClient implements InitializingBean, DisposableBean {
+public class NetworkClient {
 
     private String url;
 
@@ -29,15 +27,15 @@ public class NetworkClient implements InitializingBean, DisposableBean {
         System.out.println("Close: " + url);
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception { // Property 세팅, 즉 의존관계 주입이 끝나면 얘가 호출!
-        System.out.println("NetworkClient.afterPropertiesSet");
+
+    public void init() { // 이번에는 빈에 초기화, 소멸 지정하기
+        System.out.println("init");
         connect();
         call("초기화 연결 메시지");
     }
 
-    @Override
-    public void destroy() throws Exception {
+    public void close() {
+        System.out.println("NetworkClient.close");
         disconnect();
     }
 }
