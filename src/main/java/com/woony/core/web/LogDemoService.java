@@ -13,9 +13,8 @@ import lombok.RequiredArgsConstructor;
 public class LogDemoService {
 
     // 의존관계 주입
-    private final ObjectProvider<MyLogger> myLoggerObjectProvider;
+    private final MyLogger myLogger;
     public void logic(String id) {
-        MyLogger myLogger = myLoggerObjectProvider.getObject();
         myLogger.log("service id= " + id);
 
     }
